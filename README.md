@@ -1,7 +1,7 @@
-# Color Changing Game
+# Color Matching
 
 Color Camparison for Random Colors using Javascript.
 
-http://mubumbz.github.io/color-matching
+[Color Matching](http://mubumbz.github.io/color-matching)
 
 Feel Free to Suggest Updates
