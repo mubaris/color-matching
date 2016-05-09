@@ -1,5 +1,7 @@
 # Color Changing Game
 
-Coolest and Beautiful Color Changing Game written in JavaScript.
+Color Camparison for Random Colors using Javascript.
+
+http://mubumbz.github.io/color-matching
 
 Feel Free to Suggest Updates
