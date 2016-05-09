@@ -106,7 +106,7 @@ $(document).ready(function() {
 		var percenatge = "Color Similarity = " + per + "%";
 		console.log(per);
 		if(per > 95) {
-			alert("You Won");
+			alert("You Reached " + per + "% (>95%)");
 		}
 		document.getElementById("perc").innerHTML = percenatge;
 	});
