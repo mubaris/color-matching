@@ -68,6 +68,18 @@ function hexValue(i) {
 	}
 }
 
+
+function deltaE(L1, L2, A1, A2, B1, B2) {
+	var L = L2 - L1;
+	var A = A2 - A1;
+	var B = B2 - B1;
+	L = L * L;
+	A = A * A;
+	B = B * B;
+	var dE = Math.sqrt(L + A + B);
+	return dE;
+}
+
 var hexDigits = new Array
         ("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");
 
@@ -88,7 +100,7 @@ $(document).ready(function() {
 		var red1 = col1.slice(1, 3);
 		var red2 = col2.slice(1, 3);
 		var gre1 = col1.slice(3, 5);
-		var gre2 = col1.slice(3, 5);
+		var gre2 = col2.slice(3, 5);
 		var blu1 = col1.slice(5, 7);
 		var blu2 = col2.slice(5, 7);
 		var r1 = (16 * hexValue(red1[0]) + hexValue(red1[1]));
@@ -97,16 +109,18 @@ $(document).ready(function() {
 		var g2 = (16 * hexValue(gre2[0]) + hexValue(gre2[1]));
 		var b1 = (16 * hexValue(blu1[0]) + hexValue(blu1[1]));
 		var b2 = (16 * hexValue(blu2[0]) + hexValue(blu2[1]));
-		var r = Math.abs(r2 - r1);
-		var g = Math.abs(g2 - g1);
-		var b = Math.abs(b2 - b1);
-		var dif = Math.sqrt(((r * r) + (g * g) + (b * b))) / 255;
-		var per = (1 - dif) * 100;
+		
+		var lab1 = IColor.RGB.LAB({"r": r1, "g": g1, "b": b1});
+		var lab2 = IColor.RGB.LAB({"r": r2, "g": g2, "b": b2});
+
+		var dE = deltaE(lab1.l, lab2.l, lab1.a, lab2.a, lab1.b, lab2.b);
+
+		var per = 100 - dE;
 		per = per.toFixed(2);
 		var percenatge = "Color Similarity = " + per + "%";
 		console.log(per);
-		if(per > 95) {
-			alert("You Reached " + per + "% (>95%)");
+		if(per > 80) {
+			alert("You Reached " + per + "% (>80%)");
 		}
 		document.getElementById("perc").innerHTML = percenatge;
 	});
