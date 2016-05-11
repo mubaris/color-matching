@@ -132,8 +132,8 @@ $(document).ready(function() {
 		per = per.toFixed(2);
 		var percenatge = "Color Similarity = " + per + "%";
 		console.log(per);
-		if(per > 80) {
-			alert("You Reached " + per + "% (>80%)");
+		if(per > 90) {
+			alert("You Reached " + per + "% (>90%)");
 		}
 		document.getElementById("perc").innerHTML = percenatge;
 	});
