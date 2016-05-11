@@ -70,13 +70,26 @@ function hexValue(i) {
 
 
 function deltaE(L1, L2, A1, A2, B1, B2) {
-	var L = L2 - L1;
-	var A = A2 - A1;
-	var B = B2 - B1;
-	L = L * L;
-	A = A * A;
-	B = B * B;
-	var dE = Math.sqrt(L + A + B);
+	var dL = L1 - L2;
+	var C1 = Math.sqrt((A1 * A1) + (B1 * B1));
+	var C2 = Math.sqrt((A2 * A2) + (B2 * B2));
+	var dC = C1 - C2;
+	var da = A1 - A2;
+	var db = B1 - B2;
+	var dH = Math.sqrt((da * da) + (db * db) - (dC * dC));
+	var kL = 1;
+	var K1 = 0.045;
+	var K2 = 0.015;
+	var Sl = 1;
+	var Sc = 1 + K1 * C1;
+	var Sh = 1 + K2 * C1;
+	var p1 = (dL / (kL * Sl));
+	p1 = p1 * p1;
+	var p2 = (dC / (kL * Sc));
+	p2 = p2 * p2;
+	var p3 = (dH / (kL * Sh));
+	p3 = p3 * p3;
+	var dE = Math.sqrt(p1 + p2 + p3);
 	return dE;
 }
 
