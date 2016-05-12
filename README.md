@@ -2,6 +2,6 @@
 
 Color Camparison for Random Colors using Javascript.
 
-[Color Matching](http://mubumbz.github.io/color-matching)
+[Color Matching](http://mubaris.github.io/color-matching)
 
 Feel Free to Suggest Updates
